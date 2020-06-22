@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0" name="viewport"/>
+  <style>
+   input {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+font-size: 20px;
+}
+
+h1 {
+color: #eeeeee; 
+text-align: center;
+font-family: Helvetica;
+padding: 20px 0px;
+background-color: #112233;
+/*width: 100%;*/
+}
+
+
+h2 {
+color: #112233;
+text-align: left;
+font-family: Helvetica;
+}
+
+p {
+color: #112233;
+font-family: Helvetica;
+margin: 10px 0px;
+padding: 0px;
+}
+
+p.understated {
+color: #dddddd;
+font-family: Helvetica;
+font-size: 12px;
+margin: -10px 0px;
+padding: 0px;
+text-align: center;
+}
+
+a.understated {
+color: #dddddd;
+font-family: Helvetica;
+font-size: 14px;
+margin: -10px 0px;
+padding: 10px;
+}
+
+body {
+background-color: #112233;
+min-width: fit-content;
+}
+
+div.base {
+margin: 40px 10px;
+}
+
+#bottombar {
+background-color: #112233;
+padding: 20px 10px 10px 10px;
+
+}
+
+.nester {
+margin: 10px 10px;
+padding: 20px 5px 50px 5px;
+text-align: center;
+}
+
+.button {
+background-color: #008CBA;
+border: none;
+color: white;
+padding: 10px 15px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+border-radius: 5px;
+}
+
+#answerButton {
+background-color: #f04d99;
+border: none;
+color: white;
+padding: 10px 15px;
+text-align: center;
+float: center;
+text-decoration: none;
+font-size: 14px;
+border-radius: 5px;
+}
+
+#newButton {
+background-color: #3de03d;
+border: none;
+color: white;
+padding: 10px 15px;
+text-align: center;
+float: center;
+text-decoration: none;
+font-size: 14px;
+border-radius: 5px;
+}
+
+.container {
+    text-align: center;  
+    margin: 10px;  
+}
+
+div.entry {
+background-color: #eeeeee;
+border-radius: 5px;
+padding: 10px;
+margin: 50px;
+}
+  </style>
+ </head>
+ <body>
+  <h1>
+   Random Word
+  </h1>
+
+  <div id="mainbody">
+  </div>
+  <form action = "http://snippy.hopto.org:54321/AKRandomTransition" method = "post" class = "container">
+   <button id="newButton" style="margin: 10px;" type="submit">
+    new word from chapter
+   </button>
+   <input max="35" min="1" name="chapter" type="number" value="1"/>
+  </form>
+ </body>
+</html>

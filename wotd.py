@@ -92,7 +92,7 @@ html_doc = """
   </div>
 
 <div id = bottombar>
-   <p class = understated>This email is part of a mailing list. If you would like to be removed from it or wish to subscribe another email address, please use one of the following links:</p>
+   <p class = understated>This email is part of a mailing list. If you would like to be removed from it or wish to utilize other Snippy services, please use the following links:</p>
    
    <div class = nester>
       <a class = understated href="http://snippy.hopto.org:54321/unsubscribePage">unsubscribe</a>

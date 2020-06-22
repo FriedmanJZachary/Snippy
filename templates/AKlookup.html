@@ -1,0 +1,69 @@
+<html>
+	<head>
+
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0">
+
+		<style>
+
+			input {
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				font-size: 20px;
+			}
+
+			body {
+				background-color: #112233;
+				color: #eeeeee;
+				font-family: Helvetica;
+			}
+
+			form {
+				background-color: #112233;
+				padding: 10px 5%;
+				font-size: 20px;
+				border-radius: 5px;
+			}
+
+			div {
+			  padding: 10px;	
+			  margin: 50px;
+			  width: 90%;
+			  background-color: #eeeeee;
+			  margin-left: auto;
+  			  margin-right: auto;
+  			  border-radius: 5px;
+			}
+
+			h1 {
+			  color: #112233;
+			  text-align: center;
+			}
+
+			.button {
+			  background-color: #008CBA;
+			  border: none;
+			  color: white;
+			  padding: 10px 15px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 14px;
+			  border-radius: 5px;
+			}
+
+		</style>
+		</head>
+    <body>
+      <div>
+      <h1>
+      Look up any word you'd like
+      </h1>
+      <form action = "http://snippy.hopto.org:54321/AKsearchTransition" method = "post">
+         <p>Enter Word:</p>
+         <p><input type = "text" name = "nm" required/></p>
+         <p><input type = "submit" value = "submit" class = "button"/></p>
+      </form>
+  	  </div>
+    </body>
+</html>

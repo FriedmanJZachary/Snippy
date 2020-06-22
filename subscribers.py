@@ -1,6 +1,9 @@
 from flask import Flask, redirect, url_for, request, render_template
 import MySQLdb
 from lookupFunctions import lookup
+from AkkadianReader import AKlookup
+from AkkadianQuizzer import *
+
 
 app = Flask(__name__)
 
@@ -100,10 +103,73 @@ def searcher(word):
 
 #HOMEPAGE##############################################################
 
-
 @app.route('/home')
 def home():
    return render_template('home.html')
+
+#AKKADIANLOOKUP########################################################
+
+@app.route('/AKlookupPage')
+def AKlookupPage():
+   return render_template('AKlookup.html')
+
+
+@app.route('/AKsearchTransition', methods = ['POST', 'GET'])
+def AKsearchTransition():
+   if request.method == 'POST':
+      word = request.form['nm'].lower().strip()
+      return redirect(url_for('AKsearcher', word = word))
+   else:
+   		return("ERROR: ILLEGITIMATE ACCESS")
+         
+@app.route('/AKsearcher/<word>')
+def AKsearcher(word):
+   try:
+      result = AKlookup(word)
+   except:
+      result = render_template('error.html')
+   return result
+
+########################################################################
+
+
+#AKKADIANRANDOM########################################################
+
+@app.route('/AKRandomHome')
+def AKRandomHome():
+   return render_template('randomHome.html')
+
+
+@app.route('/AKRandomTransition', methods = ['POST', 'GET'])
+def AKRandomTransition():
+   if request.method == 'POST':
+      chapter = request.form['chapter']
+      return redirect(url_for('AKRandomUndefined', chapter = chapter))
+   else:
+   		return("ERROR: ILLEGITIMATE ACCESS")
+         
+@app.route('/AKRandomUndefined/<chapter>')
+def AKRandomUndefined(chapter):
+   result = AKRand(chapter)
+   return result
+
+
+@app.route('/AKRandomDefinedTransition', methods = ['POST', 'GET'])
+def AKRandomDefinedTransition():
+   if request.method == 'POST':
+      row = request.form['row']
+      return redirect(url_for('AKRandomDefined', row = row))
+   else:
+   		return("ERROR: ILLEGITIMATE ACCESS")
+
+@app.route('/AKRandomDefined/<row>')
+def AKRandomDefined(row):
+   result = AKAnswer(row)
+   return result
+
+
+
+########################################################################
 
 if __name__ == '__main__':
    app.run(debug = True)
