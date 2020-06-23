@@ -15,3 +15,5 @@ apotheosis
 caprice
 gerrymander
 antediluvian
+robot
+lachrymose

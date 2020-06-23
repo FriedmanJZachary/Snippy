@@ -12,6 +12,7 @@ html_doc = """
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0">
 <style>
 
@@ -158,7 +159,7 @@ margin: 50px;
     <button id="newButton" style="margin: 10px;" type="submit">
         new word from chapter
     </button>
-    <input max="35" min="1" name="chapter" type="number" id="nextChapter"/>
+    <input max="35" min="1" name="chapter" type="number" id="nextChapter" required/>
     </form>
 
 </body>

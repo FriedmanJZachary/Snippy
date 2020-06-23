@@ -19,6 +19,7 @@ def lookup(word):
 	<html>
 	<head>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0">
+<link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}">
 	<style>
 					
 		input {
