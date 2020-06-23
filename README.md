@@ -1,4 +1,4 @@
-# Snippy-s-Word-of-the-Day
+# Snippy
 A word-of-the-day emailer that scrapes various websites for word pronunciations, etymologies, etc. and emails this information daily. It generates HTML code on the fly to format these emails and maintains a full-fledged user database using MySQL that is modified through a user-accessible Flask website.
 
 This project utilizes the following services:
