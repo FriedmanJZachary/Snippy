@@ -3,6 +3,7 @@ import MySQLdb
 from lookupFunctions import lookup
 from AkkadianReader import AKlookup
 from AkkadianQuizzer import *
+from BibleReader import *
 
 
 app = Flask(__name__)
@@ -20,7 +21,7 @@ def unsubscribe():
       user = request.form['nm'].lower().strip()
       return redirect(url_for('goodbye', name = user))
    else:
-   		return("ERROR: ILLEGITIMATE ACCESS")
+        return("ERROR: ILLEGITIMATE ACCESS")
 
 
 @app.route('/goodbye/<name>')
@@ -55,7 +56,7 @@ def subscribe():
       user = request.form['nm'].lower().strip()
       return redirect(url_for('welcome', name = user))
    else:
-   		return("ERROR: ILLEGITIMATE ACCESS")
+        return("ERROR: ILLEGITIMATE ACCESS")
 
 
 @app.route('/welcome/<name>')
@@ -90,7 +91,7 @@ def searchTransition():
       word = request.form['nm'].lower().strip()
       return redirect(url_for('searcher', word = word))
    else:
-   		return("ERROR: ILLEGITIMATE ACCESS")
+        return("ERROR: ILLEGITIMATE ACCESS")
          
 @app.route('/searcher/<word>')
 def searcher(word):
@@ -120,7 +121,7 @@ def AKsearchTransition():
       word = request.form['nm'].lower().strip()
       return redirect(url_for('AKsearcher', word = word))
    else:
-   		return("ERROR: ILLEGITIMATE ACCESS")
+        return("ERROR: ILLEGITIMATE ACCESS")
          
 @app.route('/AKsearcher/<word>')
 def AKsearcher(word):
@@ -146,7 +147,7 @@ def AKRandomTransition():
       chapter = request.form['chapter']
       return redirect(url_for('AKRandomUndefined', chapter = chapter))
    else:
-   		return("ERROR: ILLEGITIMATE ACCESS")
+        return("ERROR: ILLEGITIMATE ACCESS")
          
 @app.route('/AKRandomUndefined/<chapter>')
 def AKRandomUndefined(chapter):
@@ -160,7 +161,7 @@ def AKRandomDefinedTransition():
       row = request.form['row']
       return redirect(url_for('AKRandomDefined', row = row))
    else:
-   		return("ERROR: ILLEGITIMATE ACCESS")
+        return("ERROR: ILLEGITIMATE ACCESS")
 
 @app.route('/AKRandomDefined/<row>')
 def AKRandomDefined(row):
@@ -168,6 +169,24 @@ def AKRandomDefined(row):
    return result
 
 
+#AKKADIANLOOKUP########################################################
+
+
+@app.route('/BibleSearchTransition', methods = ['POST', 'GET'])
+def BibleSearchTransition():
+   if request.method == 'POST':
+      term = request.form['term'].strip()
+      return redirect(url_for('BibleSearcher', term = term))
+   else:
+        return("ERROR: ILLEGITIMATE ACCESS")
+         
+@app.route('/BibleSearcher/<term>')
+def BibleSearcher(term):
+   try:
+      result = BibleLookup(term)
+   except:
+      result = render_template('error.html')
+   return result
 
 ########################################################################
 

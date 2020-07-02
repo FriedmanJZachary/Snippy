@@ -1,4 +1,3 @@
- 
 <html>
 	<head>
 
@@ -41,13 +40,6 @@
   			  border-radius: 5px;
 			}
 
-			.smallbox {
-				border-radius: 5px;
-				background-color: #eeeeee;
-				width: 44.5%;
-				padding: 10px;
-			}
-
 			h1 {
 			  color: #112233;
 			  text-align: center;
@@ -78,20 +70,6 @@
 			  border-radius: 5px;
 			}
 
-			#wrapper {
-			    text-align: center;
-			}
-
-			#first {
-			    display: inline-block;/* add this */
-				text-align: left;
-			}
-
-			#second {
-				display: inline-block;
-				text-align: left;
-			}
-
 			#newButton {
 			background-color: #3de03d;
 			border: none;
@@ -110,37 +88,20 @@
 
       <div class = bigbox>
       	<h1>Welcome to Snippy's Site!</h1>
-      	<p class = info>This is a small site dedicated to providing detailed, cleanly-formatted data about English, Biblical Hebrew, and Akkadian words. Feel free to perform your own English searches or <a href="http://snippy.hopto.org:54321/subscribePage">subscribe</a> to our daily newsletter.</p>
+      	<p class = info>This is a small site dedicated to providing detailed, cleanly-formatted data about English and Akkadian words. Feel free to perform your own searches or <a href="http://snippy.hopto.org:54321/subscribePage">subscribe</a> to our daily newsletter.</p>
   	  </div>
 
-  	  <div id = wrapper>
-      <div id = first class = smallbox>
+
+      <div class = bigbox>
 	      <h1>
-	      English Word Search
+	      Look up any English word you'd like
 	      </h1>
-	      <img src="{{url_for('static', filename='a.png')}}" class="center">
-	      <p class = info>Definitions, etymologies, and pronunciations availible for thousands of words</p>
 	      <form action = "http://snippy.hopto.org:54321/searchTransition" method = "post" class = "container">
 	         <p>Enter Word:</p>
 	         <p><input type = "text" name = "nm" required/></p>
 	         <p><input type = "submit" value = "submit" class = "button"/></p>
 	      </form>
   	  </div>
-
-  	  <div id = second class = smallbox>
-	      <h1>
-	      Search The Bible
-	      </h1>
-	      <img src="{{url_for('static', filename='aleph.png')}}" class="center">
-	      <p class = info>Search through the Old Testament for words or phrases</p>
-	      <form action = "http://snippy.hopto.org:54321/BibleSearchTransition" method = "post" class = "container">
-	         <p>Enter Hebrew Word (Sans Vowel Marks):</p>
-	         <p><input type = "text" name = "term" required/></p>
-	         <p><input type = "submit" value = "submit" class = "button"/></p>
-	      </form>
-  	  </div>
-  	</div>
-
 
   	  <div class = bigbox>
 	      <h1>
@@ -164,6 +125,7 @@
 
   	  <div class = bigbox>
       	<h1>About Me</h1>
+		  <!-- <img src="snippyselfie.png" alt="Selfie" class="center"> -->
 		  <img src="{{url_for('static', filename='snippyselfie.png')}}" class="center">
       	<p class = info>I'm Snippy the Lobster, a crustacean with a love for the both vocabulary and HTML. My turn-ons include melted butter, rubber bands, and long walks in the grocery-store tank. If you have any recomendations for the site or newsletter, feel free to reach out to me at snippythelobster@gmail.com.</p>
   	  </div>

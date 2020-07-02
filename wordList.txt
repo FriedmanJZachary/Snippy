@@ -1,9 +1,3 @@
-bowdlerize
-Swill
-morass
-proffer
-Desultory
-Acme
 Rugose
 Serendipity
 Cloy
@@ -26,7 +20,6 @@ Luxuriant
 Nadir
 Fastidious
 Halcyon
-Gibbous
 Aegis
 Sophistry
 Tenebrous
