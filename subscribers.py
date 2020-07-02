@@ -4,9 +4,14 @@ from lookupFunctions import lookup
 from AkkadianReader import AKlookup
 from AkkadianQuizzer import *
 from BibleReader import *
+from flask_mobility import Mobility
+from flask_mobility.decorators import mobile_template
+
+
 
 
 app = Flask(__name__)
+Mobility(app)
 
 #UNSUBSCRIPTION SERVICE #####################################################################
 
@@ -106,7 +111,11 @@ def searcher(word):
 
 @app.route('/home')
 def home():
-   return render_template('home.html')
+   if not request.MOBILE:
+       result = render_template('home.html')
+   else:
+       result = render_template('mobileHome.html')
+   return result
 
 #AKKADIANLOOKUP########################################################
 
