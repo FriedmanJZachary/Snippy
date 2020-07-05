@@ -139,7 +139,7 @@ def AKlookup(word):
                    entryTag = outsoup.new_tag("div",attrs={"class": "entry"})
                    headTag = outsoup.new_tag("h2")
                    defTag = outsoup.new_tag("p")
-                   headTag.string = row['word'] +  " | " + row['part'].replace("_", " ")
+                   headTag.string = row['word'] +  " | " + row['part'].replace("_", " ") + " (" + row['author'].capitalize() + ")"
                    defTag.string = row['definition'].strip()
 
                    entryTag.append(headTag)

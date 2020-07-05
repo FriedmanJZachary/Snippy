@@ -176,7 +176,7 @@ def simplify(word):
 
 def AKRand(chapter):
     outsoup = BeautifulSoup(html_doc, 'html.parser')
-    with open('vocab.csv', newline='') as csvfile:
+    with open('huehnergard.csv', newline='') as csvfile:
           reader = list(csv.DictReader(csvfile, delimiter='\t',  quotechar='⌾'))
 
           gotOne = False
