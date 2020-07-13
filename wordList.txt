@@ -1,13 +1,7 @@
-scapegoat
-Lachrymose
-Equivocate
-Querulous
-putrescent
+tenebrous
 Obsequious
-Burring
-Gourmandize
-Ovine
 Inimical
+surfeit
 Acerbic
 intemperance
 Beatific
@@ -15,7 +9,6 @@ Peremptory
 Luxuriant
 Nadir
 Fastidious
-Halcyon
 Aegis
 Sophistry
 Tenebrous
@@ -41,7 +34,6 @@ Ineluctable
 Malefic
 Munificent
 Prurient
-Somnolent
 Subaltern
 Piquant
 Lugubrious

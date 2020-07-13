@@ -10,7 +10,24 @@ from email.mime.text import MIMEText as text
 from unidecode import unidecode
 import json
 import os
+import re
 import MySQLdb
+
+
+
+def getQuote(definition):
+    for d in definition:
+        for e in d:
+            for a in d[e]:
+                for b in a:
+                    for c in b:
+                        if type(c) is dict:
+                            if 'dt' in c:
+                                for l in c['dt']:
+                                    if 'vis' in l:
+                                        line = l[1][0]['t']
+                                        return "\"" + re.sub("({...|})", "", line) + "\""
+    return
 
 html_doc = """
 <!DOCTYPE html>
@@ -71,6 +88,10 @@ html_doc = """
          background-color: #112233;
          padding: 20px 10px 10px 10px;
      
+      }
+
+      #quote{
+        margin: 30px 0px;
       }
 
       .nester {
@@ -146,14 +167,24 @@ meaning = jsStruct[0]
 definitions = meaning['shortdef']
 part = meaning['fl']
 
+#Make title bar display part of speech
+outsoup.find("h2", id = "beginDef").string = "Definition " + "(" + meaning['fl'] + "):"
+
+#Add definitions
 for definition in definitions:
     defTag = outsoup.new_tag("p")
     defTag.string = "• " + definition
     outsoup.find("div", id = "endDef").insert_before(defTag)
 
+#If present, insert quote
+if getQuote(meaning['def']):
+  quoteTag = outsoup.new_tag('p', id='quote')
+  quoteTag.string = getQuote(meaning['def'])
+  outsoup.find("div", id = "endDef").insert_before(quoteTag)
+
 #IPA Lookup __________________________________________________________________
 
-logfile = open('/home/pi/Desktop/WOTD/ipa.txt', 'r')
+logfile = open('ipa.txt', 'r')#'/home/pi/Desktop/WOTD/ipa.txt', 'r')
 loglist = logfile.readlines()
 logfile.close()
 
@@ -233,3 +264,4 @@ with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
     m['From'] = "Snippy The Lobster"
     m['To'] = "Snippy's Friends"
     server.sendmail(sender_email, receiver_emails, m.as_string())
+

@@ -26,116 +26,99 @@ def getQuote(definition):
     return
 
 def lookup(word):
+    
+    
+
+				
+	
+
 
 	html_doc = """
-	<!DOCTYPE html>
-	<html>
-	<head>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0">
-<link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}">
-	<style>
-					
-		input {
-			-webkit-appearance: none;
-			-moz-appearance: none;
-			appearance: none;
-			font-size: 20px;
-		}
-		
-		h1 {
-			color: #eeeeee;
-			text-align: center;
-			font-family: Helvetica;
-			padding: 20px 0px;
-			background-color: #112233;
-			/*width: 100%;*/
-		}
-		
-		h2 {
-			color: #112233;
-			text-align: left;
-			font-family: Helvetica;
-		}
-		p {
-			color: #112233;
-			font-family: Helvetica;
-			margin: 10px 0px;
-			padding: 0px;
-		}
-		p.understated {
-			color: #dddddd;
-			font-family: Helvetica;
-			font-size: 12px;
-			margin: -10px 0px;
-			padding: 0px;
-			text-align: center;
-		}
-		a.understated {
-			color: #dddddd;
-			font-family: Helvetica;
-			font-size: 14px;
-			margin: -10px 0px;
-			padding: 10px;
-		}
-		
-		body {
-			background-color: #eeeeee;
-			min-width: fit-content;
-		}
-		
-		div.base {
-			margin: 40px 10px;
-		}
-		
-		#bottombar {
-			background-color: #112233;
-			padding: 20px 10px 10px 10px;
-		
-		}
+<!DOCTYPE html>
+<html>
+<head>
+   <style>
+      
+      h1 {
+         color: #eeeeee;
+         text-align: center;
+         font-family: Helvetica;
+         padding: 20px 0px;
+         background-color: #112233;
+         /*width: 100%;*/
+      }
+      
+      h2 {
+         color: #112233;
+         text-align: left;
+         font-family: Helvetica;
+      }
+      p {
+         color: #112233;
+         font-family: Helvetica;
+         margin: 10px 0px;
+         padding: 0px;
+      }
+      p.understated {
+         color: #dddddd;
+         font-family: Helvetica;
+         font-size: 12px;
+         margin: -10px 0px;
+         padding: 0px;
+         text-align: center;
+      }
+      a.understated {
+         color: #dddddd;
+         font-family: Helvetica;
+         font-size: 14px;
+         margin: -10px 0px;
+         padding: 10px;
+      }
+      
+      body {
+         background-color: #eeeeee;
+         min-width: fit-content;
+      }
+      
+      div.base {
+         margin: 40px 10px;
+      }
+      
+      #bottombar {
+         background-color: #112233;
+         padding: 20px 10px 10px 10px;
+     
+      }
+      .nester {
+        margin: 10px 10px;
+        padding: 20px 5px 50px 5px;
+		text-align: center;
+      }
+      
+   </style>
+</head>
+<body>  
+<div id = mainbody>
+  <div class = base id = definition>
+      <h2 id = beginDef>Definition:</h2>
+      <div id = endDef></div>
+  </div>
+<div id = bottombar>
+   <p class = understated>This email is part of a mailing list. If you would like to be removed from it or wish to utilize other Snippy services, please use the following links:</p>
+   
+   <div class = nester>
+      <a class = understated href="http://snippy.hopto.org:54321/unsubscribePage">unsubscribe</a>
+      <a class = understated href="http://snippy.hopto.org:54321/home">website</a>
+   </div>
+</div>
+</body>
+</html>
+"""
+        outsoup = BeautifulSoup(html_doc, 'html.parser')
 
-		#quote{
-			margin: 30px 0px;
-		}
-		.nester {
-			margin: 10px 10px;
-			padding: 20px 5px 50px 5px;
-			text-align: center;
-		}
-		.button {
-			background-color: #008CBA;
-			border: none;
-			color: white;
-			padding: 10px 15px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 14px;
-			border-radius: 5px;
-		}
-		
-	</style>
-	</head>
-	<body>  
-		<form action = "http://snippy.hopto.org:54321/searchTransition" method = "post">
-			<p>Enter Word:</p>
-			<p><input type = "text" name = "nm" required/></p>
-			<p><input type = "submit" value = "submit" class = "button"/></p>
-        </form>
-		<div id = mainbody>
-		<div class = base id = definition>
-			<h2 id = beginDef>Definition:</h2>
-			<div id = endDef></div>
-		</div>
-		<div id = bottombar>
-		</div>
-	</body>
-	</html>
-	"""
 
-	outsoup = BeautifulSoup(html_doc, 'html.parser')
-
-	word = word.strip().lower()
-	titleTag = outsoup.new_tag("h1")
+        word = word.strip().lower()
+  titleTag = outsoup.new_tag("h1")
 	titleTag.string = word.capitalize()
 	outsoup.find("div", id = "mainbody").insert_before(titleTag)
 
