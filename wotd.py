@@ -184,7 +184,7 @@ if getQuote(meaning['def']):
 
 #IPA Lookup __________________________________________________________________
 
-logfile = open('ipa.txt', 'r')#'/home/pi/Desktop/WOTD/ipa.txt', 'r')
+logfile = open('/home/pi/Desktop/WOTD/ipa.txt', 'r')
 loglist = logfile.readlines()
 logfile.close()
 
