@@ -115,6 +115,12 @@ def home():
        result = render_template('mobileHome.html', site = config.site)
    return result
 
+ 
+@app.route('/')
+def goHome():
+   return redirect(url_for('home'))
+
+    
 #AKKADIANLOOKUP########################################################
 
 @app.route('/AKlookupPage')
