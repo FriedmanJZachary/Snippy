@@ -6,9 +6,7 @@ from AkkadianQuizzer import *
 from BibleReader import *
 from flask_mobility import Mobility
 from flask_mobility.decorators import mobile_template
-
-
-
+import config
 
 app = Flask(__name__)
 Mobility(app)
@@ -87,7 +85,7 @@ def welcome(name):
 
 @app.route('/lookupPage')
 def lookupPage():
-   return render_template('lookup.html')
+   return render_template('lookup.html', site = config.site)
 
 
 @app.route('/searchTransition', methods = ['POST', 'GET'])
@@ -112,16 +110,16 @@ def searcher(word):
 @app.route('/home')
 def home():
    if not request.MOBILE:
-       result = render_template('home.html')
+       result = render_template('home.html', site = config.site)
    else:
-       result = render_template('mobileHome.html')
+       result = render_template('mobileHome.html', site = config.site)
    return result
 
 #AKKADIANLOOKUP########################################################
 
 @app.route('/AKlookupPage')
 def AKlookupPage():
-   return render_template('AKlookup.html')
+   return render_template('AKlookup.html', site = config.site)
 
 
 @app.route('/AKsearchTransition', methods = ['POST', 'GET'])
@@ -147,7 +145,7 @@ def AKsearcher(word):
 
 @app.route('/AKRandomHome')
 def AKRandomHome():
-   return render_template('randomHome.html')
+   return render_template('randomHome.html', site = config.site)
 
 
 @app.route('/AKRandomTransition', methods = ['POST', 'GET'])
@@ -178,7 +176,7 @@ def AKRandomDefined(row):
    return result
 
 
-#AKKADIANLOOKUP########################################################
+#BIBLELOOKUP########################################################
 
 
 @app.route('/BibleSearchTransition', methods = ['POST', 'GET'])

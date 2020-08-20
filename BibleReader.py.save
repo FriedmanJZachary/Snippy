@@ -6,13 +6,9 @@ from bs4 import BeautifulSoup
 import requests
 import json
 import os
-import config
+from subsribers.py import currentsite
 
-def simplify(word):
-    newword = unicodedata.normalize('NFKD', word).encode('ascii','ignore').decode("ascii")
-    return newword
-
-def AKlookup(word):
+def BibleLookup(word):
     html_doc = """
     <!DOCTYPE html>
     <html>
@@ -37,20 +33,17 @@ def AKlookup(word):
     /*width: 100%;*/
     }
     
-
     h2 {
     color: #112233;
     text-align: left;
     font-family: Helvetica;
     }
-
     p {
     color: #112233;
     font-family: Helvetica;
     margin: 10px 0px;
     padding: 0px;
     }
-
     p.understated {
     color: #dddddd;
     font-family: Helvetica;
@@ -59,7 +52,6 @@ def AKlookup(word):
     padding: 0px;
     text-align: center;
     }
-
     a.understated {
     color: #dddddd;
     font-family: Helvetica;
@@ -82,13 +74,11 @@ def AKlookup(word):
     padding: 20px 10px 10px 10px;
     
     }
-
     .nester {
     margin: 10px 10px;
     padding: 20px 5px 50px 5px;
     text-align: center;
     }
-
     .button {
     background-color: #008CBA;
     border: none;
@@ -107,46 +97,41 @@ def AKlookup(word):
     padding: 10px;
     margin: 40px;
     }
-
     </style>
     </head>
-
-    <body>  
-
-    <form action = "http://snippy.hopto.org:54321/AKsearchTransition" method = "post">
-    <p><input type = "text" name = "nm" required/></p>
+    <body>
+    <form action = "http://snippy.hopto.org:54321/BibleSearchTransition" method = "post">
+    <p><input type = "text" name = "term" required/></p>
     <p><input type = "submit" value = "submit" class = "button"/></p>
         </form>
-
     <div id = mainbody>
-
     <div id = bottombar>
     </div>
-
     </body>
     </html>
     """
 
     outsoup = BeautifulSoup(html_doc, 'html.parser')
-    with open('vocab.csv', newline='') as csvfile:
-          reader = csv.DictReader(csvfile, delimiter='	',  quotechar='⌾')
-          for row in reader:
-               if simplify(row['word']).startswith(simplify(word)):
-                   print("\n")
-                   print(row['word'], "|", row['part'], "\n", row['definition'].strip())
 
-                   entryTag = outsoup.new_tag("div",attrs={"class": "entry"})
-                   headTag = outsoup.new_tag("h2")
-                   defTag = outsoup.new_tag("p")
-                   headTag.string = row['word'] +  " | " + row['part'].replace("_", " ") + " (" + row['author'].capitalize() + ")"
-                   defTag.string = row['definition'].strip()
+    with open('rawData.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
 
-                   entryTag.append(headTag)
-                   entryTag.append(defTag)
+        for row in reader:
+	        if word in row['text']:
+
+	           entryTag = outsoup.new_tag("div",attrs={"class": "entry"})
+	           headTag = outsoup.new_tag("h2")
+	           defTag = outsoup.new_tag("p")
+	           headTag.string = row['book'] + " " + row['chapter'] + ":" + row['verse']
+	           defTag.string = row['text'].strip()
+
+	           entryTag.append(headTag)
+	        entryTag.append(defTag)
                    outsoup.find("div", id = "bottombar").insert_before(entryTag)
+                   forms = outsoup.find_all("form")
+                   for form in forms:
+                       form['action'] = "http://" + site + ":54321/BibleSearchTransition"
 
-    forms = outsoup.find_all("form")
-    for form in forms:
-        form['action'] = "http://" + config.site + ":54321/AKsearchTransition"
+
 
     return outsoup.prettify()

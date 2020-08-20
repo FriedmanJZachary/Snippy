@@ -1,0 +1,1 @@
+site = "snippy.hopto.org"

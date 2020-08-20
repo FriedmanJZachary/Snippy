@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 import json
 import os
-
+import config
 
 def BibleLookup(word):
     html_doc = """
@@ -99,9 +99,8 @@ def BibleLookup(word):
     }
     </style>
     </head>
-    <body>  
+    <body>
     <form action = "http://snippy.hopto.org:54321/BibleSearchTransition" method = "post">
-    <p>Enter Word:</p>
     <p><input type = "text" name = "term" required/></p>
     <p><input type = "submit" value = "submit" class = "button"/></p>
         </form>
@@ -118,16 +117,22 @@ def BibleLookup(word):
         reader = csv.DictReader(csvfile)
 
         for row in reader:
-	        if word in row['text']:
+            if word in row['text']:
 
-	           entryTag = outsoup.new_tag("div",attrs={"class": "entry"})
-	           headTag = outsoup.new_tag("h2")
-	           defTag = outsoup.new_tag("p")
-	           headTag.string = row['book'] + " " + row['chapter'] + ":" + row['verse']
-	           defTag.string = row['text'].strip()
+               entryTag = outsoup.new_tag("div",attrs={"class": "entry"})
+               headTag = outsoup.new_tag("h2")
+               defTag = outsoup.new_tag("p")
+               headTag.string = row['book'] + " " + row['chapter'] + ":" + row['verse']
+               defTag.string = row['text'].strip()
 
-	           entryTag.append(headTag)
-	           entryTag.append(defTag)
-	           outsoup.find("div", id = "bottombar").insert_before(entryTag)
+               entryTag.append(headTag)
+               entryTag.append(defTag)
+               outsoup.find("div", id = "bottombar").insert_before(entryTag)
+
+    forms = outsoup.find_all("form")
+    for form in forms:
+        form['action'] = "http://" + config.site + ":54321/BibleSearchTransition"
+
+
 
     return outsoup.prettify()

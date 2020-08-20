@@ -41,12 +41,7 @@
   			  border-radius: 5px;
 			}
 
-			.smallbox {
-				border-radius: 5px;
-				background-color: #eeeeee;
-				width: 44%;
-				padding: 10px;
-			}
+    
 
 			h1 {
 			  color: #112233;
@@ -82,16 +77,6 @@
 			    text-align: center;
 			}
 
-			#first {
-			    display: inline-block;/* add this */
-				text-align: left;
-			}
-
-			#second {
-				display: inline-block;
-				text-align: left;
-			}
-
 			#newButton {
 			background-color: #3de03d;
 			border: none;
@@ -113,48 +98,48 @@
       	<p class = info>This is a small site dedicated to providing detailed, cleanly-formatted data about English, Biblical Hebrew, and Akkadian words. Feel free to perform your own English searches or <a href="http://snippy.hopto.org:54321/subscribePage">subscribe</a> to our daily newsletter.</p>
   	  </div>
 
-  	  <div id = wrapper>
-      <div id = first class = smallbox>
+  
+      <div class = bigbox>
 	      <h1>
 	      English Word Search
 	      </h1>
 	      <img src="{{url_for('static', filename='a.png')}}" class="center">
 	      <p class = info>Thousands of definitions, etymologies, and pronunciations</p>
-	      <form action = "http://{{ site }}:54321/searchTransition" method = "post" class = "container">
+	      <form action = ":54321/searchTransition" method = "post" class = "container">
 	         <p>Enter Word:</p>
 	         <p><input type = "text" name = "nm" required/></p>
 	         <p><input type = "submit" value = "submit" class = "button"/></p>
 	      </form>
   	  </div>
 
-  	  <div id = second class = smallbox>
+  	  <div class = bigbox>
 	      <h1>
 	      Search The Bible
 	      </h1>
 	      <img src="{{url_for('static', filename='aleph.png')}}" class="center">
-	      <p class = info>Search the Old Testament for words or phrases</p>
-	      <form action = "http://{{ site }}:54321/BibleSearchTransition" method = "post" class = "container">
-	         <p>Enter Hebrew Term (Sans Vowel Marks):</p>
+	      <p class = info>Search through the Old Testament for words or phrases</p>
+	      <form action = "http://snippy.hopto.org:54321/BibleSearchTransition" method = "post" class = "container">
+	         <p>Enter Hebrew Word (Sans Vowel Marks):</p>
 	         <p><input type = "text" name = "term" required/></p>
 	         <p><input type = "submit" value = "submit" class = "button"/></p>
 	      </form>
   	  </div>
-  	</div>
+  
 
 
   	  <div class = bigbox>
 	      <h1>
 	      Akkadian Words
 	      </h1>
-	      <p class = info>Word lookup or quizzes, the latter based on Huehnergard's <i>A Grammar of Akkadian</i></p>
+	      <p class = info>Word lookup or quizzes, both based on Huehnergard's <i>A Grammar of Akkadian</i></p>
 
-	      <form action = "http://{{ site }}:54321/AKsearchTransition" method = "post">
+	      <form action = "http://snippy.hopto.org:54321/AKsearchTransition" method = "post">
          <p>Enter Akkadian Word:</p>
          <p><input type = "text" name = "nm" required/></p>
          <p><input type = "submit" value = "submit" class = "button"/></p>
       </form>
 
-		<form action = "http://{{ site }}:54321/AKRandomTransition" method = "post" class = "container">
+		<form action = "http:/:54321/AKRandomTransition" method = "post" class = "container">
 		   <button id="newButton" style="margin: 10px;" type="submit">
 		    random word from chapter
 		   </button>

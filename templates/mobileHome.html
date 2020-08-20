@@ -104,8 +104,8 @@
 	      English Word Search
 	      </h1>
 	      <img src="{{url_for('static', filename='a.png')}}" class="center">
-	      <p class = info>Definitions, etymologies, and pronunciations availible for thousands of words</p>
-	      <form action = "http://snippy.hopto.org:54321/searchTransition" method = "post" class = "container">
+	      <p class = info>Thousands of definitions, etymologies, and pronunciations</p>
+	      <form action = "http://{{ site }}:54321/searchTransition" method = "post" class = "container">
 	         <p>Enter Word:</p>
 	         <p><input type = "text" name = "nm" required/></p>
 	         <p><input type = "submit" value = "submit" class = "button"/></p>
@@ -118,7 +118,7 @@
 	      </h1>
 	      <img src="{{url_for('static', filename='aleph.png')}}" class="center">
 	      <p class = info>Search through the Old Testament for words or phrases</p>
-	      <form action = "http://snippy.hopto.org:54321/BibleSearchTransition" method = "post" class = "container">
+	      <form action = "http://{{ site }}:54321/BibleSearchTransition" method = "post" class = "container">
 	         <p>Enter Hebrew Word (Sans Vowel Marks):</p>
 	         <p><input type = "text" name = "term" required/></p>
 	         <p><input type = "submit" value = "submit" class = "button"/></p>
