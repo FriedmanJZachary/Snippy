@@ -62,3 +62,5 @@ luddite
 torpor
 epigram
 cosset
+cavil
+aphorism
