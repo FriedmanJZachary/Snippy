@@ -1,1 +1,1 @@
-site = "snippy.hopto.org"
+site = "snippythelobster.com"

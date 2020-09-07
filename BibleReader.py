@@ -131,7 +131,7 @@ def BibleLookup(word):
 
     forms = outsoup.find_all("form")
     for form in forms:
-        form['action'] = "http://" + config.site + ":54321/BibleSearchTransition"
+        form['action'] = "http://" + config.site + "/BibleSearchTransition"
 
 
 

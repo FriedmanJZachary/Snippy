@@ -117,7 +117,7 @@ def lookup(word):
     </style>
     </head>
     <body>  
-        <form action = "http://snippy.hopto.org:54321/searchTransition" method = "post">
+        <form action = "http://snippy.hopto.org/searchTransition" method = "post">
             <p>Enter Word:</p>
             <p><input type = "text" name = "nm" required/></p>
             <p><input type = "submit" value = "submit" class = "button"/></p>
@@ -210,6 +210,6 @@ def lookup(word):
                 outsoup.find("div", id = "bottombar").insert_before(etymTag)
     forms = outsoup.find_all("form")
     for form in forms:
-        form['action'] = "http://" + config.site + ":54321/searchTransition"
+        form['action'] = "http://" + config.site + "/searchTransition"
 
     return outsoup.prettify()

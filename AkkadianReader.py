@@ -113,7 +113,7 @@ def AKlookup(word):
 
     <body>  
 
-    <form action = "http://snippy.hopto.org:54321/AKsearchTransition" method = "post">
+    <form action = "http://snippy.hopto.org/AKsearchTransition" method = "post">
     <p><input type = "text" name = "nm" required/></p>
     <p><input type = "submit" value = "submit" class = "button"/></p>
         </form>
@@ -147,6 +147,6 @@ def AKlookup(word):
 
     forms = outsoup.find_all("form")
     for form in forms:
-        form['action'] = "http://" + config.site + ":54321/AKsearchTransition"
+        form['action'] = "http://" + config.site + "/AKsearchTransition"
 
     return outsoup.prettify()
