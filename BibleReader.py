@@ -30,7 +30,6 @@ def BibleLookup(word):
     font-family: Helvetica;
     padding: 20px 0px;
     background-color: #112233;
-    /*width: 100%;*/
     }
     
     h2 {
@@ -44,6 +43,7 @@ def BibleLookup(word):
     margin: 10px 0px;
     padding: 0px;
     }
+
     p.understated {
     color: #dddddd;
     font-family: Helvetica;
@@ -52,6 +52,7 @@ def BibleLookup(word):
     padding: 0px;
     text-align: center;
     }
+
     a.understated {
     color: #dddddd;
     font-family: Helvetica;
@@ -67,6 +68,10 @@ def BibleLookup(word):
     
     div.base {
     margin: 40px 10px;
+    }
+
+    .formholder {
+    display:inline-block;
     }
     
     #bottombar {
@@ -90,6 +95,14 @@ def BibleLookup(word):
     font-size: 14px;
     border-radius: 5px;
     }
+
+    .home{
+    	text-align: center;
+    }
+
+    #homebutton{
+    	background-color: #f04d99;
+    }
     
     div.entry {
     background-color: #eeeeee;
@@ -100,15 +113,26 @@ def BibleLookup(word):
     </style>
     </head>
     <body>
-    <form action = "http://snippy.hopto.org:54321/BibleSearchTransition" method = "post">
-    <p><input type = "text" name = "term" required/></p>
-    <p><input type = "submit" value = "submit" class = "button"/></p>
-        </form>
+
+ 
+    <form action = "/BibleSearchTransition" method = "post">
+	    <p><input type = "text" name = "term" required/></p>
+	    <p><input type = "submit" value = "submit" class = "button"/></p>
+    </form>
+
+    <form class = "home" action = " " method = "get">
+	    <p><input id = homebutton type = "submit" value = "return to home" class = "button home"/></p>
+    </form>
+
+
     <div id = mainbody>
     <div id = bottombar>
     </div>
+
+
     </body>
     </html>
+
     """
 
     outsoup = BeautifulSoup(html_doc, 'html.parser')
@@ -131,7 +155,7 @@ def BibleLookup(word):
 
     forms = outsoup.find_all("form")
     for form in forms:
-        form['action'] = "http://" + config.site + "/BibleSearchTransition"
+        form['action'] = "http://" + config.site + form['action']
 
 
 

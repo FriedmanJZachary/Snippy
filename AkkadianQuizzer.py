@@ -7,6 +7,7 @@ import requests
 import json
 import os
 import random
+import config
 
 html_doc = """
 <!DOCTYPE html>
@@ -133,6 +134,16 @@ padding: 10px;
 margin: 50px;
 }
 
+.home{
+    text-align: center;
+}
+
+#homebutton{
+    background-color: #008CBA;
+}
+
+
+
 </style>
 </head>
 
@@ -154,13 +165,18 @@ margin: 50px;
     </div>
 
     <div id="insertionPoint"></div>
-
-    <form action = "http://snippy.hopto.org:54321/AKRandomTransition" method = "post" class = "container">
+    
+    <form action = "/AKRandomTransition" method = "post" class = "container">
     <button id="newButton" style="margin: 10px;" type="submit">
         new word from chapter
     </button>
     <input max="35" min="1" name="chapter" type="number" id="nextChapter" required/>
     </form>
+    
+    <form class = "home" action = "" method = "get">
+	    <p><input id = homebutton type = "submit" value = "return to home" class = "button home"/></p>
+    </form>
+    
 
 </body>
 </html>
@@ -198,7 +214,7 @@ def AKRand(chapter):
                 outsoup.find("div", id = "bottombar").insert_before(entryTag)
                 
                 
-                define_HTML = """<p>TESTTEST</p><form class = "container" action = "http://snippy.hopto.org:54321/AKRandomDefinedTransition" method = "post">
+                define_HTML = """<p></p><form class = "container" action = "/AKRandomDefinedTransition" method = "post">
                 <button type="submit" id="answerButton">define term</button>
                 <input type="hidden" name="row" id="rowVal"></form>"""
 
@@ -208,7 +224,9 @@ def AKRand(chapter):
 
                 outsoup.find("input", id = "nextChapter")['value'] =  int(float(chapter.strip()))
 
-
+                forms = outsoup.find_all("form")
+                for form in forms:
+                    form['action'] = "http://" + config.site + form['action']
 
 	        
     return outsoup.prettify()
@@ -216,6 +234,10 @@ def AKRand(chapter):
 
 def AKAnswer(rowNum):
     outsoup = BeautifulSoup(html_doc, 'html.parser')
+    forms = outsoup.find_all("form")
+    for form in forms:
+        form['action'] = "http://" + config.site + form['action']
+
     with open('vocab.csv', newline='') as csvfile:
         reader = list(csv.DictReader(csvfile, delimiter='\t',  quotechar='⌾'))
         

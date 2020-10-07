@@ -1,5 +1,3 @@
-genuflection	/ˌdʒɛn yʊˈflɛk ʃən/
-synecdoche	/sɪˈnɛk.də.ki/
 aaberg	/ˈɑbɝɡ/
 aachen	/ˈɑkən/
 aachener	/ˈɑkənɝ/
@@ -34542,6 +34540,7 @@ elicit	/ɪˈɫɪsɪt/
 elicits	/ɪˈɫɪsəts/
 elicker	/ˈɛɫɪkɝ/
 elick	/ˈɛɫɪk/
+elide	/ɪˈlaɪd/
 elie	/ˈɛɫi/
 eligaya	/ɛɫəˈɡaɪə/
 eligibility	/ˌɛɫɪdʒəˈbɪɫɪti/
@@ -43877,6 +43876,7 @@ gent's	/ˈdʒɛnts/
 gents	/ˈdʒɛnts/
 gentz	/ˈdʒɛnts/
 gentzler	/ˈdʒɛntsɫɝ/
+genuflection	/ˌdʒɛn yʊˈflɛk ʃən/
 genuine	/ˈdʒɛnˈjuˌwaɪn/, /ˈdʒɛnjəwən/
 genuinely	/ˈdʒɛnˈjuˌwaɪnɫi/, /ˈdʒɛnjəwənɫi/
 genuineness	/ˈdʒɛnjəwənɪs/
@@ -89648,6 +89648,7 @@ prophet	/ˈpɹɑfət/
 prophets	/ˈpɹɑfəts/
 prophylactic	/ˌpɹɑfɪˈɫæktɪk/, /ˌpɹoʊfɪˈɫæktɪk/
 propionic	/ˌpɹoʊpiˈɑnɪk/
+propitiation	/ prəˌpɪʃ iˈeɪ ʃən / 
 propitious	/pɹəˈpɪʃəs/
 proponent	/pɹəˈpoʊnənt/
 proponents	/pɹəˈpoʊnənts/
@@ -110962,6 +110963,7 @@ syndicats	/ˈsɪndɪˌkɪts/
 syndrich	/ˈsɪdɹɪtʃ/
 syndrome	/ˈsɪnˌdɹoʊm/
 syndromes	/ˈsɪnˌdɹoʊmz/
+synecdoche	/sɪˈnɛk.də.ki/
 synergen	/ˈsɪnɝˌdʒɛn/
 synergen's	/ˈsɪnɝˌdʒɛnz/
 synergetic	/sɪnɝˈdʒɛtɪk/

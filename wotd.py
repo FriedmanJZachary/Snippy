@@ -116,8 +116,8 @@ html_doc = """
    <p class = understated>This email is part of a mailing list. If you would like to be removed from it or wish to utilize other Snippy services, please use the following links:</p>
    
    <div class = nester>
-      <a class = understated href="http://snippy.hopto.org:54321/unsubscribePage">unsubscribe</a>
-      <a class = understated href="http://snippy.hopto.org:54321/home">website</a>
+      <a class = understated href="http://snippythelobster.com/unsubscribePage">unsubscribe</a>
+      <a class = understated href="http://snippythelobster.com/home">website</a>
    </div>
 </div>
 

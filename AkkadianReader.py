@@ -107,16 +107,29 @@ def AKlookup(word):
     padding: 10px;
     margin: 40px;
     }
+    
+    .home{
+    	text-align: center;
+    }
+
+    #homebutton{
+    	background-color: #f04d99;
+    }
+    
 
     </style>
     </head>
 
     <body>  
 
-    <form action = "http://snippy.hopto.org/AKsearchTransition" method = "post">
-    <p><input type = "text" name = "nm" required/></p>
-    <p><input type = "submit" value = "submit" class = "button"/></p>
-        </form>
+    <form action = "/AKsearchTransition" method = "post">
+        <p><input type = "text" name = "nm" required/></p>
+        <p><input type = "submit" value = "submit" class = "button"/></p>
+    </form>
+    
+    <form class = "home" action = "" method = "get">
+	<p><input id = homebutton type = "submit" value = "return to home" class = "button home"/></p>
+    </form>
 
     <div id = mainbody>
 
@@ -147,6 +160,6 @@ def AKlookup(word):
 
     forms = outsoup.find_all("form")
     for form in forms:
-        form['action'] = "http://" + config.site + "/AKsearchTransition"
+        form['action'] = "http://" + config.site + form['action']
 
     return outsoup.prettify()

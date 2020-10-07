@@ -102,6 +102,7 @@ def lookup(word):
             padding: 20px 5px 50px 5px;
             text-align: center;
         }
+        
         .button {
             background-color: #008CBA;
             border: none;
@@ -114,14 +115,27 @@ def lookup(word):
             border-radius: 5px;
         }
         
+        .home{
+    	    text-align: center;
+        }
+
+        #homebutton{
+    	    background-color: #f04d99;
+        }
+        
     </style>
     </head>
     <body>  
-        <form action = "http://snippy.hopto.org/searchTransition" method = "post">
+        <form action = "/searchTransition" method = "post">
             <p>Enter Word:</p>
             <p><input type = "text" name = "nm" required/></p>
             <p><input type = "submit" value = "submit" class = "button"/></p>
         </form>
+        
+        <form class = "home" action = "" method = "get">
+	    <p><input id = homebutton type = "submit" value = "return to home" class = "button home"/></p>
+        </form>
+    
         <div id = mainbody>
         <div class = base id = definition>
             <h2 id = beginDef>Definition:</h2>
@@ -210,6 +224,6 @@ def lookup(word):
                 outsoup.find("div", id = "bottombar").insert_before(etymTag)
     forms = outsoup.find_all("form")
     for form in forms:
-        form['action'] = "http://" + config.site + "/searchTransition"
+        form['action'] = "http://" + config.site + form['action']
 
     return outsoup.prettify()
