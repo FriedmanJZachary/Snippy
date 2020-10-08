@@ -86,3 +86,4 @@ redolent
 quixotic
 ligature
 syncope
+tincture
