@@ -189,7 +189,7 @@ loglist = logfile.readlines()
 logfile.close()
 
 for line in loglist:
-    if line.startswith(word):
+    if line.startswith(word + "\t"):
         pronunciation = line.split("/")[1].strip()
 
         #Add in pronunciation, if applicable
