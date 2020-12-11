@@ -136,13 +136,17 @@ def BibleLookup(word):
     """
 
     outsoup = BeautifulSoup(html_doc, 'html.parser')
-
+    
+    forms = outsoup.find_all("form")
+    for form in forms:
+        form['action'] = "http://" + config.site + form['action']
+        
+    numlines = 0    
     with open('rawData.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
 
         for row in reader:
             if word in row['text']:
-
                entryTag = outsoup.new_tag("div",attrs={"class": "entry"})
                headTag = outsoup.new_tag("h2")
                defTag = outsoup.new_tag("p")
@@ -152,11 +156,9 @@ def BibleLookup(word):
                entryTag.append(headTag)
                entryTag.append(defTag)
                outsoup.find("div", id = "bottombar").insert_before(entryTag)
-
-    forms = outsoup.find_all("form")
-    for form in forms:
-        form['action'] = "http://" + config.site + form['action']
-
-
+               numlines += 1
+               
+               if numlines > 20:
+                   return outsoup.prettify()
 
     return outsoup.prettify()

@@ -7,8 +7,15 @@ from BibleReader import *
 from flask_mobility import Mobility
 from flask_mobility.decorators import mobile_template
 import config
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["10 per minute"],
+)
 Mobility(app)
 
 #UNSUBSCRIPTION SERVICE #####################################################################
@@ -144,8 +151,6 @@ def AKsearcher(word):
       result = render_template('error.html')
    return result
 
-########################################################################
-
 
 #AKKADIANRANDOM########################################################
 
@@ -194,6 +199,7 @@ def BibleSearchTransition():
         return("ERROR: ILLEGITIMATE ACCESS")
          
 @app.route('/BibleSearcher/<term>')
+@limiter.limit("3 per minute")
 def BibleSearcher(term):
    try:
       result = BibleLookup(term)
@@ -204,4 +210,4 @@ def BibleSearcher(term):
 ########################################################################
 
 if __name__ == '__main__':
-   app.run(debug = True)
+   app.run(debug = False)
