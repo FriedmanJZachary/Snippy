@@ -1,0 +1,90 @@
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}">
+      <style>
+         input {
+         -webkit-appearance: none;
+         -moz-appearance: none;
+         appearance: none;
+         font-size: 20px;
+         }
+         body {
+         background-color: #112233;
+         color: #eeeeee;
+         font-family: Helvetica;
+         }
+         #myForm {
+         text-align: left;
+         background-color: #112233;
+         padding: 10px 5%;
+         font-size: 20px;
+         border-radius: 5px;
+         }
+         div {
+         padding: 10px;	
+         margin: 50px;
+         width: 90%;
+         background-color: #eeeeee;
+         margin-left: auto;
+         margin-right: auto;
+         border-radius: 5px;
+         text-align:center;
+         }
+         h1 {
+         color: #112233;
+         text-align: center;
+         }
+         h3 {
+         color: #112233;
+         text-align: center;
+         }
+         .button {
+         background-color: #008CBA;
+         border: none;
+         color: white;
+         padding: 10px 15px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 14px;
+         border-radius: 5px;
+         }
+
+         #homebutton{
+         background-color: #f04d99;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         }
+
+         .home{
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         }
+
+      </style>
+   </head>
+   <body>
+      <div>
+         <h1>
+            Food for Snippy
+         </h1>
+         <h3>
+            Suggest any word you'd like
+         </h3>
+         <form id = myForm action = "http://{{ site }}/uploadTransition" method = "post">
+            <p>Enter Word:</p>
+            <p><input type = "text" name = "term" required/></p>
+            <p><input type = "submit" value = "submit" class = "button"/></p>
+         </form>
+
+         <form class = "home" action = "http://{{ site }}" method = "get">
+            <p><input id = homebutton type = "submit" value = "return to home" class = "button home"/></p>
+         </form>
+
+      </div>
+   </body>
+</html>
+

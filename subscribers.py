@@ -207,7 +207,24 @@ def BibleSearcher(term):
       result = render_template('error.html')
    return result
 
-########################################################################
+
+#Word Suggestion #######################################################################
+
+@app.route('/uploadWord')
+def upload():
+    print("SETTING UP\n\n")
+    return render_template('food.html', site = config.site)
+
+@app.route('/uploadTransition', methods = ['POST', 'GET'])
+def uploadTransition():
+    print("Transitioning\n\n")
+    if request.method == 'POST':
+        term = request.form['term'].strip()
+        with open("review.txt", "a") as myfile:
+            myfile.write(term + "\n")
+        return render_template('foodSuccess.html', site = config.site)
+    else:
+        return("ERROR: ILLEGITIMATE ACCESS")
 
 if __name__ == '__main__':
    app.run(debug = False)
