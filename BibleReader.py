@@ -104,6 +104,7 @@ def BibleLookup(word):
     	background-color: #f04d99;
     }
     
+    
     div.entry {
     background-color: #eeeeee;
     border-radius: 5px;
@@ -143,18 +144,24 @@ def BibleLookup(word):
         
     numlines = 0    
     with open('rawData.csv', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
+        reader = csv.DictReader(csvfile, delimiter='@')
 
         for row in reader:
             if word in row['text']:
                entryTag = outsoup.new_tag("div",attrs={"class": "entry"})
                headTag = outsoup.new_tag("h2")
-               defTag = outsoup.new_tag("p")
+               defTag = outsoup.new_tag("h3")
                headTag.string = row['book'] + " " + row['chapter'] + ":" + row['verse']
                defTag.string = row['text'].strip()
-
+#                defTag['id'] = bolder
+               
+               transTag = outsoup.new_tag("p")
+               transTag.string = row['translation'].strip()
+            
                entryTag.append(headTag)
                entryTag.append(defTag)
+               entryTag.append(transTag)
+               
                outsoup.find("div", id = "bottombar").insert_before(entryTag)
                numlines += 1
                
