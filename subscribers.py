@@ -108,7 +108,7 @@ def searcher(word):
    try:
       result = lookup(word)
    except:
-      result = render_template('error.html')
+      result = render_template('error.html', site = config.site)
    return result
 
 
@@ -148,7 +148,7 @@ def AKsearcher(word):
    try:
       result = AKlookup(word)
    except:
-      result = render_template('error.html')
+      result = render_template('error.html', site = config.site)
    return result
 
 
@@ -201,10 +201,10 @@ def BibleSearchTransition():
 @app.route('/BibleSearcher/<term>')
 @limiter.limit("3 per minute")
 def BibleSearcher(term):
-   try:
-      result = BibleLookup(term)
-   except:
-      result = render_template('error.html')
+   #try:
+   result = BibleLookup(term)
+  # except:
+    #  result = render_template('error.html', site = config.site)
    return result
 
 
