@@ -206,7 +206,7 @@ for line in loglist:
 link = "https://www.etymonline.com/word/" + word
 data = requests.get(link).text
 soup = BeautifulSoup(data, features="html.parser")
-div_container = soup.find_all("div", {"class": "word--C9UPa"})
+div_container = soup.find("div", {"class": "word--C9UPa"})
 
 if div_container:
     etymTag = BeautifulSoup("<div class = base etymology><h2 id = beginEtym>Etymology:</h2><div class = etymEnd></div></div>", 'html.parser')
