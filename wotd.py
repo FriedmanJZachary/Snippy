@@ -252,7 +252,11 @@ for email in myresult:
 port = 465  # For SSL
 smtp_server = "smtp.gmail.com"
 sender_email = "snippythelobster@gmail.com"
-password = "beautifulsoup"
+
+with open("/home/pi/Desktop/WOTD/password.txt", "r") as f:
+    mypassword = f.readline()
+
+password = mypassword
 
 
 context = ssl.create_default_context()
